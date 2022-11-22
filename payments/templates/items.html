@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Buy Item</title>
+  </head>
+  <body>
+    <h1>{{ data.name }}</h1>
+    <p>{{ data.description }}</p>
+    <p>Price: {{ data.price }} {{ data.currency }}</p>
+    <form action="/buy/{{ data.id }}">
+        <button id="buy-button" type="submit">Buy</button>
+    </form>
+    <form action="/">
+         <button id="buy-button" type="submit">Back</button>
+    </form>
+  </body>
+</html>
+

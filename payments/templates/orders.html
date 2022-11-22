@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Buy Order</title>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+</style>
+</head>
+<body>
+
+    <h1>ORDER  #{{ order_id }}</h1>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Currency</th>
+        <th>Discount %</th>
+        <th>Tax</th>
+        <th>Amount</th>
+      </tr>
+    {% for d in data %}
+      <tr>
+        <td>{{ d.item.name }}</td>
+        <td>{{ d.quantity }}</td>
+        <td>{{ d.item.price }}</td>
+        <td>{{ d.item.currency }}</td>
+        <td>{{ d.discount.percent }}</td>
+        <td>{{ d.tax.amount }}</td>
+        <td>{{ d.amount }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+
+    <h2>Price: {{ tax_due }} {{ currency }}</h2>
+    <h2>Discount: {{ discount }} {{ currency }}</h2>
+    <h2>Tax: {{ tax }} {{ currency }}</h2>
+    <form action="/buy_order/{{ id }}">
+        <button id="buy-button" type="submit">Buy</button>
+    </form>
+    <form action="/">
+         <button id="buy-button" type="submit">Back</button>
+    </form>
+</body>
+</html>
+
+
